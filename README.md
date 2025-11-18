@@ -17,9 +17,9 @@ WAFL (Wider Attribute Formatting Language) is a human-readable configuration lan
 
 | Package             | Path              | Description                                                                                    |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------- |
-| `@wafl-lang/core`   | `packages/core`   | Parser, resolver, evaluator, schema validator, and shared utilities.                           |
-| `@wafl-lang/config` | `packages/config` | CLI and programmatic API orchestrating loading, resolving, evaluating, and validating configs. |
-| `@wafl-lang/cli`    | `packages/cli`    | Thin global binary that delegates to the internal CLI inside `@wafl-lang/config`.              |
+| [`@wafl-lang/core`](https://www.npmjs.com/package/@wafl-lang/core)   | `packages/core`   | Parser, resolver, evaluator, schema validator, and shared utilities.                           |
+| [`@wafl-lang/config`](https://www.npmjs.com/package/@wafl-lang/config) | `packages/config` | CLI and programmatic API orchestrating loading, resolving, evaluating, validating configs. |
+| [`@wafl-lang/cli`](https://www.npmjs.com/package/@wafl-lang/cli)    | `packages/cli`    | Thin global binary that delegates to the internal CLI inside `@wafl-lang/config`.              |
 
 ## Getting started
 
