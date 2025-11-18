@@ -1,0 +1,50 @@
+{
+  "name": "@wafl-lang/config",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "WAFL Config — CLI and API for the Wider Attribute Formatting Language",
+  "keywords": [
+    "wafl",
+    "configuration",
+    "yaml",
+    "parser",
+    "schema",
+    "eval",
+    "dsl"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Jornatf",
+    "url": "https://github.com/jornatf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wafl-lang/wafl.git",
+    "directory": "packages/config"
+  },
+  "bin": {
+    "wafl": "bin/wafl.mjs"
+  },
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/index.mjs"
+    }
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@wafl-lang/core": "workspace:*",
+    "yaml": "^2.5.1"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=dev node bin/wafl.mjs build examples/app.config.wafl",
+    "build": "echo 'Build complete for @wafl-lang/config'",
+    "test": "node --test"
+  }
+}

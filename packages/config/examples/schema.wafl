@@ -1,0 +1,10 @@
+@schema:
+  App:
+    name: string
+    version: string
+    port: int
+    debug?: bool
+    theme:
+      primary: string
+      secondary: string
+    features: list<string>

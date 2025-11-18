@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+lib/
+out/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+**/.DS_Store
+
+# Testing
+coverage/
+.nyc_output/
+.phpunit.*
+
+# Temporary files
+*.tmp
+.cache/
+.temp/
+
+# Lock files (keep pnpm-lock.yaml)
+# Uncomment if you want to ignore lock files:
+# pnpm-lock.yaml
+
+# OS generated files
+Thumbs.db

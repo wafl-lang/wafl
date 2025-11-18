@@ -1,0 +1,50 @@
+{
+  "name": "@wafl-lang/core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "WAFL Core — Wider Attribute Formatting Language engine (parser, eval, schema, tags)",
+  "keywords": [
+    "wafl",
+    "configuration",
+    "yaml",
+    "parser",
+    "schema",
+    "eval",
+    "dsl"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Jornatf",
+    "url": "https://github.com/jornatf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wafl-lang/wafl.git",
+    "directory": "packages/core"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./loader.mjs": "./src/loader.mjs",
+    "./parser.mjs": "./src/parser.mjs",
+    "./eval.mjs": "./src/eval.mjs",
+    "./resolver.mjs": "./src/resolver.mjs",
+    "./schema.mjs": "./src/schema.mjs",
+    "./tags.mjs": "./src/tags.mjs",
+    "./utils.mjs": "./src/utils.mjs"
+  },
+  "main": "./src/index.mjs",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "yaml": "^2.5.1",
+    "expr-eval": "^2.0.2"
+  },
+  "scripts": {
+    "build": "echo 'No build step needed for WAFL core (pure ESM)'",
+    "test": "node --test"
+  }
+}

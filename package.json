@@ -1,0 +1,21 @@
+{
+  "name": "wafl",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WAFL — Wider Attribute Formatting Language ecosystem",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --filter @wafl-lang/config run dev",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r test",
+    "publish:all": "pnpm -r publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wafl-lang/wafl.git"
+  },
+  "author": "Jornatf",
+  "license": "MIT"
+}

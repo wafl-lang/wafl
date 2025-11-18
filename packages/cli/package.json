@@ -1,0 +1,40 @@
+{
+  "name": "@wafl-lang/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "WAFL CLI — global binary for the Wider Attribute Formatting Language ecosystem",
+  "keywords": [
+    "wafl",
+    "configuration",
+    "yaml",
+    "parser",
+    "schema",
+    "eval",
+    "dsl"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Jornatf",
+    "url": "https://github.com/jornatf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wafl-lang/wafl.git",
+    "directory": "packages/cli"
+  },
+  "bin": {
+    "wafl": "bin/wafl.mjs"
+  },
+  "files": [
+    "bin"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@wafl-lang/config": "workspace:*"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
