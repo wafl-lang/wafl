@@ -1,4 +1,4 @@
-# WAFL
+# WAFL ![NPM Downloads](https://img.shields.io/npm/d18m/%40wafl-lang%2Fcore?label=@wafl-lang%2Fcore) ![NPM Downloads](https://img.shields.io/npm/d18m/%40wafl-lang%2Fconfig?label=@wafl-lang%2Fconfig) ![NPM Downloads](https://img.shields.io/npm/d18m/%40wafl-lang%2Fcli?label=@wafl-lang%2Fcli) ![GitHub License](https://img.shields.io/github/license/wafl-lang/wafl)
 
 <img src="assets/wafl-card.png" />
 
