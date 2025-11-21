@@ -1,4 +1,5 @@
 # @wafl-lang/config
+![NPM Downloads](https://img.shields.io/npm/d18m/%40wafl-lang%2Fconfig)
 
 CLI and Node API for loading WAFL configuration files. It wraps the WAFL core engine with a user-friendly executable and helper utilities.
 
