@@ -1,4 +1,5 @@
 # @wafl-lang/cli
+![NPM Downloads](https://img.shields.io/npm/d18m/%40wafl-lang%2Fcli)
 
 Global launcher for the WAFL command line interface. It delegates to `@wafl-lang/config`'s binary so you can run WAFL commands from anywhere.
 
