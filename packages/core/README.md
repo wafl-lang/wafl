@@ -1,4 +1,5 @@
 # @wafl-lang/core
+![NPM Downloads](https://img.shields.io/npm/d18m/%40wafl-lang%2Fcore)
 
 Core engine for the Wider Attribute Formatting Language (WAFL): parsing, resolving tags/expressions, evaluating documents, and validating against schemas.
 
