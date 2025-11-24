@@ -27,3 +27,22 @@ test("loadWaflConfigFromString parses, evaluates, and validates WAFL source", as
     },
   });
 });
+
+test("loadWaflConfigFromString throws on schema mismatch", async () => {
+  const source = [
+    "@schema:",
+    "  App:",
+    "    name: string",
+    "    port: int",
+    "",
+    "app<App>:",
+    '  name: "Demo"',
+    // port is intentionally missing
+    "",
+  ].join("\n");
+
+  await assert.rejects(
+    () => loadWaflConfigFromString(source, { env: {} }),
+    /Required field 'port'/,
+  );
+});

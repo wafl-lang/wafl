@@ -1,17 +1,15 @@
 # @wafl-lang/config
 ![NPM Downloads](https://img.shields.io/npm/d18m/%40wafl-lang%2Fconfig)
 
-CLI and Node API for loading WAFL configuration files. It wraps the WAFL core engine with a user-friendly executable and helper utilities.
+Loader and CLI for WAFL configuration files. Ships both a Node API (`loadConfig`) and a `wafl` CLI that parse, resolve, evaluate, and validate `.wafl` configs (imports, tags, expressions, and `@schema` blocks).
 
 ## Install
 
-- Project dependency: `pnpm add @wafl-lang/config` (workspace uses `@wafl-lang/core` automatically)
-- Global CLI via the launcher: `pnpm add -g @wafl-lang/cli` or run directly with `npx @wafl-lang/config`
+- Add to a project: `pnpm add @wafl-lang/config`
+- Use the CLI without install: `npx @wafl-lang/config validate path/to/app.wafl`
+- Globally (optional): `pnpm add -g @wafl-lang/config`
 
-## Tests
-
-- From repo root: `pnpm test --filter @wafl-lang/config`
-- Direct: `cd packages/config && node --test`
+Requires Node 18+.
 
 ## CLI
 
@@ -25,6 +23,7 @@ Commands:
 Options:
   --out=FILE           Write result JSON to file
   --env.KEY=value      Inject environment variable
+  --quiet              Silence logs
 ```
 
 Examples:
@@ -44,4 +43,16 @@ const config = await loadConfig("config/app.wafl", {
 // config now contains the fully resolved, evaluated, and validated JSON object
 ```
 
-`loadConfig` resolves tags, evaluates expressions, and validates the document (using either inline `@schema` or referenced schema metadata). It throws if the file is missing or validation fails.
+What `loadConfig` does:
+
+- Reads the `.wafl` file and its `@import` dependencies (relative paths supported).
+- Extracts `@schema` metadata and validates the final document (throws on mismatch).
+- Resolves tags (`!tag(args)`), conditions (`- if ...:`), and `$ENV` expressions.
+- Evaluates inline expressions (e.g., `port = $ENV.PORT || 3000`) with `env` merged over `process.env`.
+
+Errors surface as regular exceptions with context; wrap in `try/catch` if you want custom handling.
+
+## Testing (in this repo)
+
+- From repo root: `pnpm test --filter @wafl-lang/config`
+- Direct: `cd packages/config && pnpm test`
