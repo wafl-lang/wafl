@@ -1,6 +1,6 @@
 {
   "name": "@wafl-lang/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "WAFL CLI — global binary for the Wider Attribute Formatting Language ecosystem",
   "keywords": [
