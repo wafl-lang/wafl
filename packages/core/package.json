@@ -1,6 +1,6 @@
 {
   "name": "@wafl-lang/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "WAFL Core — Wider Attribute Formatting Language engine (parser, eval, schema, tags)",
   "keywords": [
