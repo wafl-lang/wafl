@@ -1,8 +1,16 @@
-import { loadWaflFile } from "./loader.mjs";
 import { resolveWafl } from "./resolver.mjs";
 import { evaluateDocument } from "./eval.mjs";
 import { validateDocument } from "./schema.mjs";
 import { parseWaflString } from "./parser.mjs";
+
+// Lazy-load loader.mjs so browser bundles (e.g., Next.js client) do not pull fs/path.
+let _loaderPromise;
+async function getLoader() {
+  if (!_loaderPromise) {
+    _loaderPromise = import("./loader.mjs");
+  }
+  return _loaderPromise;
+}
 
 /**
  * Loads and processes an WAFL configuration file.
@@ -20,6 +28,7 @@ import { parseWaflString } from "./parser.mjs";
  * @throws {Error} If file not found, parsing fails, or validation errors occur
  */
 export async function loadWaflConfig(filePath, { env = process.env } = {}) {
+  const { loadWaflFile } = await getLoader();
   const { doc, meta } = loadWaflFile(filePath);
   const resolved = resolveWafl(doc, { env });
   const evaluated = evaluateDocument(resolved, { env });
