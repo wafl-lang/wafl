@@ -35,3 +35,36 @@ export function deepMerge(a, b) {
   }
   return b;
 }
+
+/**
+ * Extracts type annotations from keys that follow the pattern key<Type>.
+ *
+ * @param {object} doc - The document tree to inspect
+ * @returns {object} Map of dotted paths to their associated type names
+ */
+export function extractTypeMetadata(doc) {
+  const metadata = {};
+
+  function walk(obj, path = "") {
+    if (!obj || typeof obj !== "object" || Array.isArray(obj)) return;
+
+    for (const key of Object.keys(obj)) {
+      const match = key.match(/^(.*)<([A-Za-z0-9_]+)>$/);
+      if (match) {
+        const baseKey = match[1] || key;
+        const typeName = match[2];
+        const fullPath = path ? `${path}.${baseKey}` : baseKey;
+        metadata[fullPath] = typeName;
+      }
+
+      if (obj[key] && typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+        const cleanKey = key.replace(/<.*>$/, "");
+        const nextPath = path ? `${path}.${cleanKey}` : cleanKey;
+        walk(obj[key], nextPath);
+      }
+    }
+  }
+
+  walk(doc);
+  return metadata;
+}

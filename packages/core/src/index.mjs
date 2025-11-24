@@ -2,6 +2,7 @@ import { resolveWafl } from "./resolver.mjs";
 import { evaluateDocument } from "./eval.mjs";
 import { validateDocument } from "./schema.mjs";
 import { parseWaflString } from "./parser.mjs";
+import { extractTypeMetadata } from "./utils.mjs";
 
 // Lazy-load loader.mjs so browser bundles (e.g., Next.js client) do not pull fs/path.
 let _loaderPromise;
@@ -29,10 +30,11 @@ async function getLoader() {
  */
 export async function loadWaflConfig(filePath, { env = process.env } = {}) {
   const { loadWaflFile } = await getLoader();
-  const { doc, meta } = loadWaflFile(filePath);
+  const { doc, meta } = loadWaflFile(filePath, { env });
+  const typeMetadata = extractTypeMetadata(doc);
   const resolved = resolveWafl(doc, { env });
   const evaluated = evaluateDocument(resolved, { env });
-  validateDocument(evaluated, meta.schema);
+  validateDocument(evaluated, meta.schema, typeMetadata);
   return evaluated;
 }
 
@@ -49,6 +51,7 @@ export async function loadWaflConfig(filePath, { env = process.env } = {}) {
  */
 export async function loadWaflConfigFromString(source, { env = process.env } = {}) {
   const parsed = parseWaflString(source, env);
+  const typeMetadata = extractTypeMetadata(parsed);
   const meta = {
     imports: [],
     schema: null,
@@ -72,6 +75,6 @@ export async function loadWaflConfigFromString(source, { env = process.env } = {
 
   const resolved = resolveWafl(parsed, { env });
   const evaluated = evaluateDocument(resolved, { env });
-  validateDocument(evaluated, meta.schema);
+  validateDocument(evaluated, meta.schema, typeMetadata);
   return evaluated;
 }
